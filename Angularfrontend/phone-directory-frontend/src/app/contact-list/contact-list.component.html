@@ -1,0 +1,16 @@
+<h2>Contact List</h2>
+<input type="text" [(ngModel)]="searchTerm" (keyup)="search()" placeholder="Search by Name or Phone Number">
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone Number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let contact of contacts">
+      <td>{{ contact.name }}</td>
+      <td>{{ contact.phoneNumber }}</td>
+    </tr>
+  </tbody>
+</table>
