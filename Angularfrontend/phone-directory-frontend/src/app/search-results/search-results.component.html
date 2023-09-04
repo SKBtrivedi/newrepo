@@ -1,0 +1,12 @@
+<div>
+  <h1>Search Results</h1>
+  <div>
+    <input [(ngModel)]="searchText" placeholder="Search" />
+    <button (click)="searchContacts()">Search</button>
+  </div>
+  <ul>
+    <li *ngFor="let contact of filteredContacts">
+      {{ contact.name }} - {{ contact.phone }}
+    </li>
+  </ul>
+</div>

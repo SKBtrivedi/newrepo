@@ -1,16 +1,45 @@
-<h2>Contact List</h2>
-<input type="text" [(ngModel)]="searchTerm" (keyup)="search()" placeholder="Search by Name or Phone Number">
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Phone Number</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let contact of contacts">
-      <td>{{ contact.name }}</td>
-      <td>{{ contact.phoneNumber }}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Add Contact</h2>
+          <form [formGroup]="contactForm" (ngSubmit)="addContact()">
+            <div class="form-group">
+              <input type="text" class="form-control" formControlName="name" placeholder="Name" />
+              <div *ngIf="contactForm.get('name')?.hasError('required')" class="text-danger">
+                Name is required.
+              </div>
+              <div *ngIf="contactForm.get('name')?.hasError('string')" class="text-danger">
+                Name must be a string.
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" formControlName="phone" placeholder="Phone" />
+              <div *ngIf="contactForm.get('phone')?.hasError('required')" class="text-danger">
+                Phone is required.
+              </div>
+              <div *ngIf="contactForm.get('phone')?.hasError('pattern')" class="text-danger">
+                Phone must be 10 digits.
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="contactForm.invalid" >Save</button>
+            <button type="button" class="btn btn-primary" style="margin-left:10px ;" routerLink="/search">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Contact List</h2>
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let contact of contacts">
+              {{ contact.name }} - {{ contact.phone }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

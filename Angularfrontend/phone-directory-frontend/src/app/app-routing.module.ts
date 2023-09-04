@@ -1,17 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ContactListComponent } from './contact-list/contact-list.component';
-import { AddContactComponent } from './add-contact/add-contact.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
 
 const routes: Routes = [
-  
-  { component: ContactListComponent, path: 'contacts' },
-  { path: 'add', component: AddContactComponent },
-  { path: '',  component: ContactListComponent},
+  { path: '', component: ContactListComponent },
+  { path: 'search', component: SearchResultsComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

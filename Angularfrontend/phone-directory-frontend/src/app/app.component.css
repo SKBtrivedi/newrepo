@@ -1,0 +1,31 @@
+/* Apply background color to the entire page */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0; /* Choose your desired background color */
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Center the content */
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Make sure the container takes up the entire viewport height */
+  }
+  
+  .content {
+    text-align: center;
+    background-color: white; /* Add a background color to your content area */
+    padding: 70px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .heading
+  {
+    background-color: lightgreen;
+    border-radius: 8px;
+  }
+  
+  

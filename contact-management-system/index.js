@@ -1,26 +1,26 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const app = express();
-const port = 3000;
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
+app.use(cors());
 app.use(bodyParser.json());
 
-let phoneBook = [];
+// Mock data for contacts
+let contacts = [];
 
-app.get('/api/contacts', (req, res) => {
-  res.json(phoneBook);
-});
-
+// Create a new contact
 app.post('/api/contacts', (req, res) => {
-  const { name, phoneNumber } = req.body;
-  if (!name || !phoneNumber) {
-    return res.status(400).json({ error: 'Name and phone number are required.' });
-  }
-
-  phoneBook.push({ name, phoneNumber });
-  res.status(201).json({ message: 'Contact added successfully.' });
+  const newContact = req.body;
+  contacts.push(newContact);
+  res.json(newContact);
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+// Get all contacts
+app.get('/api/contacts', (req, res) => {
+  res.json(contacts);
+});
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
 });
